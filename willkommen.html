@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notenkiste – Noten, Tests & Zeugnisse für die Grundschule</title>
+<meta name="description" content="Notenkiste: Noten berechnen, Tests auswerten und Zeugnisse vorbereiten – alles lokal auf dem Gerät, ohne Konten und ohne Tracking.">
+<link rel="icon" href="img/appicon.png">
+<style>
+  :root{
+    --blau-hell:#6fb1ff;
+    --blau-dunkel:#2f7fe0;
+    --papier:#fdf9ee;
+    --linie:#d8bfc9;
+    --rand:#c94f5c;
+    --gruen:#3c9a4a;
+    --gold:#f4b73f;
+    --orange:#f0973b;
+    --text:#1c1c1e;
+    --text-soft:#5b5b60;
+    color-scheme: light;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text);
+    background:var(--papier);
+    line-height:1.55;
+  }
+  a{color:var(--blau-dunkel);}
+
+  /* Hero */
+  .hero{
+    background:linear-gradient(160deg,var(--blau-hell),var(--blau-dunkel) 70%);
+    color:#fff;
+    padding:3.2rem 1.4rem 4.5rem;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 12% 20%, rgba(255,255,255,.14) 0, transparent 40%),
+      radial-gradient(circle at 88% 75%, rgba(255,255,255,.10) 0, transparent 45%);
+    pointer-events:none;
+  }
+  .icon-badge{
+    width:96px;height:96px;
+    border-radius:24px;
+    box-shadow:0 10px 26px rgba(0,40,90,.35);
+    margin-bottom:1.1rem;
+  }
+  .hero h1{
+    font-size:2.1rem;
+    margin:.2rem 0 .5rem;
+    letter-spacing:-.01em;
+  }
+  .hero p.tagline{
+    font-size:1.08rem;
+    max-width:34rem;
+    margin:0 auto;
+    color:rgba(255,255,255,.92);
+  }
+  .cta-row{
+    margin-top:1.9rem;
+    display:flex;
+    gap:.8rem;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:.45rem;
+    padding:.75rem 1.35rem;
+    border-radius:999px;
+    font-weight:600;
+    font-size:.98rem;
+    text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{
+    background:#fff;
+    color:var(--blau-dunkel);
+    box-shadow:0 8px 20px rgba(0,30,70,.28);
+  }
+  .btn-ghost{
+    background:rgba(255,255,255,.14);
+    color:#fff;
+    border:1.5px solid rgba(255,255,255,.55);
+  }
+
+  /* Notizzettel-Card, angelehnt ans App-Icon */
+  .notiz{
+    max-width:760px;
+    margin:-3rem auto 3rem;
+    background:var(--papier);
+    border:1px solid #eadfca;
+    border-radius:20px;
+    box-shadow:0 18px 40px rgba(30,60,110,.16);
+    padding:1.8rem 1.6rem 1.6rem 2.4rem;
+    position:relative;
+    z-index:2;
+  }
+  .notiz::before{
+    content:"";
+    position:absolute;
+    left:1.5rem; top:0; bottom:0;
+    width:2px;
+    background:var(--rand);
+    opacity:.55;
+  }
+  .notiz-zeile{
+    display:flex;
+    align-items:flex-start;
+    gap:.7rem;
+    padding:.55rem 0;
+    border-bottom:1px solid #ecdfc3;
+    font-size:1.02rem;
+  }
+  .notiz-zeile:last-child{ border-bottom:none; }
+  .haken{
+    color:var(--gruen);
+    font-weight:800;
+    font-size:1.1rem;
+    line-height:1.3;
+  }
+
+  section{
+    max-width:920px;
+    margin:0 auto;
+    padding:2.6rem 1.4rem;
+  }
+  h2{
+    font-size:1.5rem;
+    text-align:center;
+    margin-bottom:1.8rem;
+  }
+
+  .features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:1.1rem;
+  }
+  .feature{
+    background:#fff;
+    border-radius:16px;
+    padding:1.3rem 1.2rem;
+    box-shadow:0 6px 18px rgba(30,60,110,.08);
+    text-align:center;
+  }
+  .feature .emoji{
+    font-size:1.9rem;
+    display:block;
+    margin-bottom:.5rem;
+  }
+  .feature h3{
+    margin:.1rem 0 .35rem;
+    font-size:1.02rem;
+  }
+  .feature p{
+    margin:0;
+    font-size:.9rem;
+    color:var(--text-soft);
+  }
+
+  /* Screenshots */
+  .shots{
+    display:flex;
+    gap:1.4rem;
+    overflow-x:auto;
+    padding:.5rem .2rem 1rem;
+    scroll-snap-type:x mandatory;
+  }
+  .shots img{
+    scroll-snap-align:center;
+    width:220px;
+    flex:0 0 auto;
+    border-radius:22px;
+    box-shadow:0 14px 30px rgba(30,60,110,.20);
+    border:6px solid #111;
+  }
+
+  /* Freemium */
+  .preise{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:1.2rem;
+  }
+  .plan{
+    background:#fff;
+    border-radius:18px;
+    padding:1.6rem 1.5rem;
+    box-shadow:0 6px 18px rgba(30,60,110,.08);
+  }
+  .plan h3{ margin-top:0; }
+  .plan.pro{
+    background:linear-gradient(165deg,#fff7e8,#fff);
+    border:1.5px solid var(--gold);
+  }
+  .plan ul{
+    padding-left:1.1rem;
+    margin:.6rem 0 0;
+    font-size:.95rem;
+    color:var(--text-soft);
+  }
+  .plan ul li{ margin:.25rem 0; }
+  .badge-pro{
+    display:inline-block;
+    background:var(--gold);
+    color:#5a3c00;
+    font-size:.72rem;
+    font-weight:700;
+    padding:.15rem .55rem;
+    border-radius:999px;
+    margin-left:.4rem;
+  }
+
+  .datenschutz-band{
+    background:#eaf3ff;
+    border-radius:18px;
+    padding:1.6rem 1.8rem;
+    display:flex;
+    align-items:center;
+    gap:1.1rem;
+    max-width:920px;
+    margin:0 auto 2.6rem;
+  }
+  .datenschutz-band .emoji{ font-size:2.1rem; }
+  .datenschutz-band p{ margin:0; font-size:.96rem; color:var(--text-soft); }
+
+  footer{
+    text-align:center;
+    padding:2.2rem 1.4rem 3rem;
+    font-size:.86rem;
+    color:var(--text-soft);
+  }
+  footer a{ color:var(--text-soft); text-decoration:underline; }
+  footer .links{ margin-bottom:.6rem; }
+  footer .links a{ margin:0 .5rem; }
+
+  .pencil-divider{
+    text-align:center;
+    font-size:1.4rem;
+    margin:.4rem 0 0;
+    color:var(--orange);
+    letter-spacing:.6rem;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img class="icon-badge" src="img/appicon.png" alt="Notenkiste App-Icon">
+  <h1>Notenkiste</h1>
+  <p class="tagline">Noten berechnen, Tests auswerten und Zeugnisse vorbereiten –
+  entwickelt für Grundschule &amp; Sekundarstufe I. Alle Daten bleiben auf deinem Gerät.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="https://apps.apple.com/app/notenkiste" target="_blank" rel="noopener">📱 Im App Store</a>
+    <a class="btn btn-ghost" href="support.html">Support &amp; FAQ</a>
+  </div>
+</div>
+
+<div class="notiz">
+  <div class="notiz-zeile"><span class="haken">✓</span> Notenrechner mit frei einstellbarem Notenschlüssel</div>
+  <div class="notiz-zeile"><span class="haken">✓</span> Klassenlisten &amp; Tests mit automatischer Auswertung</div>
+  <div class="notiz-zeile"><span class="haken">✓</span> Zeugnismodul mit Fach- und Klassenübersicht</div>
+  <div class="notiz-zeile"><span class="haken">✓</span> PDF-/CSV-Export &amp; optionaler iCloud-Sync</div>
+</div>
+
+<section>
+  <h2>Für den Schulalltag gemacht</h2>
+  <div class="features">
+    <div class="feature">
+      <span class="emoji">🧮</span>
+      <h3>Rechner</h3>
+      <p>Punkte eintippen, Note sofort sehen – mit jedem Notenschlüssel, den du brauchst.</p>
+    </div>
+    <div class="feature">
+      <span class="emoji">🧑‍🤝‍🧑</span>
+      <h3>Klassen</h3>
+      <p>Klassenlisten anlegen und Kinder eindeutig mit ihren Tests verknüpfen.</p>
+    </div>
+    <div class="feature">
+      <span class="emoji">📝</span>
+      <h3>Tests</h3>
+      <p>Ganze Klassenarbeiten in Sekunden auswerten, inklusive Notenspiegel.</p>
+    </div>
+    <div class="feature">
+      <span class="emoji">📜</span>
+      <h3>Zeugnis</h3>
+      <p>Noten aus dem Schuljahr zum Zeugnisschnitt zusammenführen.</p>
+    </div>
+    <div class="feature">
+      <span class="emoji">🔒</span>
+      <h3>App-Sperre</h3>
+      <p>FaceID/Code-Schutz für Schülerdaten – kostenlos, weil Datenschutz kein Extra ist.</p>
+    </div>
+    <div class="feature">
+      <span class="emoji">☁️</span>
+      <h3>iCloud-Sync</h3>
+      <p>Optionaler Abgleich zwischen iPhone und iPad über deinen eigenen Account.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Ein Blick in die App</h2>
+  <div class="shots">
+    <img src="img/shot_rechner.png" alt="Screenshot: Notenrechner" loading="lazy">
+    <img src="img/shot_tests.png" alt="Screenshot: Tests" loading="lazy">
+    <img src="img/shot_zeugnis.png" alt="Screenshot: Zeugnis" loading="lazy">
+  </div>
+</section>
+
+<section>
+  <h2>Gratis starten, bei Bedarf freischalten</h2>
+  <div class="preise">
+    <div class="plan">
+      <h3>Gratis</h3>
+      <ul>
+        <li>Notenrechner unbegrenzt</li>
+        <li>1 Klasse, 2 Tests</li>
+        <li>Notentabellen ansehen</li>
+        <li>Datensicherung (Export/Import)</li>
+        <li>App-Sperre per FaceID/Code</li>
+      </ul>
+    </div>
+    <div class="plan pro">
+      <h3>Notenkiste Pro <span class="badge-pro">einmalig</span></h3>
+      <ul>
+        <li>Unbegrenzte Klassen &amp; Tests</li>
+        <li>Zeugnis-Modul</li>
+        <li>PDF-/CSV-Export</li>
+        <li>iCloud-Sync zwischen deinen Geräten</li>
+        <li>Kein Abo – einmal kaufen, immer nutzen</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="datenschutz-band">
+  <span class="emoji">🛡️</span>
+  <p><strong>Alles bleibt bei dir.</strong> Keine Benutzerkonten, keine Server des Anbieters,
+  kein Tracking, keine Werbung. Schülerdaten verlassen dein Gerät nur, wenn du es
+  ausdrücklich möchtest (Export oder dein eigener iCloud-Sync).</p>
+</div>
+
+<div class="pencil-divider">✏️ · · · · ·</div>
+
+<footer>
+  <div class="links">
+    <a href="index.html">Datenschutzerklärung</a>
+    <a href="support.html">Support</a>
+    <a href="impressum.html">Impressum</a>
+  </div>
+  Notenkiste · Sebastian Stein
+</footer>
+
+</body>
+</html>
