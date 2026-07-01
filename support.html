@@ -4,43 +4,117 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Support – Notenkiste</title>
+<meta name="description" content="Support und häufige Fragen zur App Notenkiste.">
+<link rel="icon" href="img/appicon.png">
 <style>
-  :root { color-scheme: light dark; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 2rem 1.2rem 4rem;
-    color: #1c1c1e;
-    background: #fff;
+  :root{
+    --blau-hell:#6fb1ff;
+    --blau-dunkel:#2f7fe0;
+    --papier:#fdf9ee;
+    --rand:#c94f5c;
+    --gruen:#3c9a4a;
+    --gold:#f4b73f;
+    --orange:#f0973b;
+    --text:#1c1c1e;
+    --text-soft:#5b5b60;
+    color-scheme: light;
   }
-  @media (prefers-color-scheme: dark) {
-    body { color: #e5e5e7; background: #1c1c1e; }
-    a { color: #6ea8fe; }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text);
+    background:var(--papier);
+    line-height:1.6;
   }
-  h1 { font-size: 1.7rem; margin-bottom: .2rem; }
-  h2 { font-size: 1.15rem; margin-top: 2rem; }
-  .intro { color: #6a6a6e; }
-  .kontakt {
-    margin: 1.4rem 0;
-    padding: 1rem 1.2rem;
-    border-radius: 12px;
-    background: rgba(120,150,255,.12);
+  a{color:var(--blau-dunkel);}
+
+  .kopf{
+    background:linear-gradient(160deg,var(--blau-hell),var(--blau-dunkel) 70%);
+    color:#fff;
+    padding:2.2rem 1.4rem 3.2rem;
+    text-align:center;
   }
-  .faq-frage { font-weight: 600; margin-top: 1.3rem; }
-  .faq-antwort { margin-top: .2rem; }
-  footer { margin-top: 3rem; font-size: .85rem; color: #8a8a8e; }
+  .kopf img{
+    width:56px;height:56px;
+    border-radius:14px;
+    box-shadow:0 8px 18px rgba(0,40,90,.3);
+    margin-bottom:.7rem;
+  }
+  .kopf h1{ margin:.1rem 0 .2rem; font-size:1.55rem; }
+  .kopf p{ color:rgba(255,255,255,.9); font-size:.95rem; margin:0 auto; max-width:32rem; }
+  .zurueck{
+    display:inline-block;
+    margin-top:1rem;
+    font-size:.88rem;
+    color:rgba(255,255,255,.9);
+    text-decoration:none;
+    border:1px solid rgba(255,255,255,.5);
+    border-radius:999px;
+    padding:.35rem .9rem;
+  }
+
+  main{
+    max-width:720px;
+    margin:-1.8rem auto 0;
+    background:var(--papier);
+    border:1px solid #eadfca;
+    border-radius:20px;
+    box-shadow:0 18px 40px rgba(30,60,110,.14);
+    padding:1.8rem 1.7rem 1.6rem 2.3rem;
+    position:relative;
+  }
+  main::before{
+    content:"";
+    position:absolute;
+    left:1.4rem; top:0; bottom:0;
+    width:2px;
+    background:var(--rand);
+    opacity:.5;
+  }
+
+  .kontakt{
+    background:#eaf3ff;
+    border-radius:14px;
+    padding:1.1rem 1.3rem;
+    margin:0 0 1.6rem;
+  }
+  .kontakt strong{ display:block; margin-bottom:.3rem; }
+
+  h2{ font-size:1.15rem; margin:0 0 1rem; }
+  .faq{ padding:1rem 0; border-bottom:1px solid #ecdfc3; }
+  .faq:last-of-type{ border-bottom:none; }
+  .faq-frage{
+    font-weight:700;
+    margin:0 0 .3rem;
+    display:flex;
+    align-items:flex-start;
+    gap:.5rem;
+  }
+  .faq-frage .haken{ color:var(--gruen); }
+  .faq-antwort{ margin:0; font-size:.96rem; color:var(--text-soft); }
+
+  .fussnav{ text-align:center; padding:1.6rem 1.4rem 0; font-size:.92rem; }
+  .pencil-divider{
+    text-align:center; font-size:1.3rem; margin:1.6rem 0 0;
+    color:var(--orange); letter-spacing:.5rem;
+  }
+  footer{ text-align:center; padding:1rem 1.4rem 3rem; font-size:.86rem; color:var(--text-soft); }
 </style>
 </head>
 <body>
 
-<h1>Support – Notenkiste</h1>
-<p class="intro">Notenkiste ist eine App für Lehrkräfte zum Berechnen, Verwalten und
-Exportieren von Noten. Hier findest du Hilfe und den Kontaktweg.</p>
+<div class="kopf">
+  <img src="img/appicon.png" alt="Notenkiste App-Icon">
+  <h1>Support</h1>
+  <p>Notenkiste ist eine App für Lehrkräfte zum Berechnen, Verwalten und Exportieren von Noten. Hier findest du Hilfe und den Kontaktweg.</p>
+  <a class="zurueck" href="index.html">← Zurück zur Startseite</a>
+</div>
+
+<main>
 
 <div class="kontakt">
-  <strong>Kontakt</strong><br>
+  <strong>Kontakt</strong>
   Bei Fragen, Problemen oder Wünschen schreib mir gern eine E-Mail:<br>
   <a href="mailto:seb.stein@me.com?subject=Notenkiste%20Support">seb.stein@me.com</a><br>
   Ich antworte in der Regel innerhalb weniger Tage.
@@ -48,33 +122,49 @@ Exportieren von Noten. Hier findest du Hilfe und den Kontaktweg.</p>
 
 <h2>Häufige Fragen</h2>
 
-<p class="faq-frage">Wie sichere ich meine Daten oder wechsle das Gerät?</p>
-<p class="faq-antwort">Öffne den Tab <em>Info</em> und tippe auf „Daten sichern (Export)".
-Du erhältst eine Datei mit allen Tests, Klassen, Klassenstufen, Zeugnissen und
-Notentabellen. Auf dem neuen Gerät installierst du Notenkiste und wählst im Tab
-<em>Info</em> „Sicherung wiederherstellen".</p>
+<div class="faq">
+  <p class="faq-frage"><span class="haken">✓</span> Wie sichere ich meine Daten oder wechsle das Gerät?</p>
+  <p class="faq-antwort">Öffne den Tab <em>Info</em> und tippe auf „Daten sichern (Export)".
+  Du erhältst eine Datei mit allen Tests, Klassen, Klassenstufen, Zeugnissen und
+  Notentabellen. Auf dem neuen Gerät installierst du Notenkiste und wählst im Tab
+  <em>Info</em> „Sicherung wiederherstellen".</p>
+</div>
 
-<p class="faq-frage">Wie gleiche ich iPad und iPhone ab?</p>
-<p class="faq-antwort">Aktiviere im Tab <em>Info</em> den optionalen iCloud-Sync (Teil von
-Notenkiste Pro). Beide Geräte müssen mit derselben Apple-ID angemeldet sein. Die Daten
-bleiben in deinem eigenen, privaten iCloud-Account.</p>
+<div class="faq">
+  <p class="faq-frage"><span class="haken">✓</span> Wie gleiche ich iPad und iPhone ab?</p>
+  <p class="faq-antwort">Aktiviere im Tab <em>Info</em> den optionalen iCloud-Sync (Teil von
+  Notenkiste Pro). Beide Geräte müssen mit derselben Apple-ID angemeldet sein. Die Daten
+  bleiben in deinem eigenen, privaten iCloud-Account.</p>
+</div>
 
-<p class="faq-frage">Ich habe „Notenkiste Pro" gekauft – wie bekomme ich es auf einem neuen Gerät?</p>
-<p class="faq-antwort">Tippe im Tab <em>Info</em> auf „Käufe wiederherstellen". Der einmalige
-Kauf ist an deine Apple-ID gebunden und wird dann ohne erneute Zahlung freigeschaltet.</p>
+<div class="faq">
+  <p class="faq-frage"><span class="haken">✓</span> Ich habe „Notenkiste Pro" gekauft – wie bekomme ich es auf einem neuen Gerät?</p>
+  <p class="faq-antwort">Tippe im Tab <em>Info</em> auf „Käufe wiederherstellen". Der einmalige
+  Kauf ist an deine Apple-ID gebunden und wird dann ohne erneute Zahlung freigeschaltet.</p>
+</div>
 
-<p class="faq-frage">Was ist gratis, was kostet etwas?</p>
-<p class="faq-antwort">Die Gratis-Version ist voll als Notenrechner nutzbar (inkl. einer
-Klassenliste, zwei Tests, kostenloser Datensicherung und der App-Sperre per FaceID/Code).
-Mit dem einmaligen Kauf „Notenkiste Pro" (kein Abo) schaltest du das Zeugnis-Modul,
-unbegrenzte Klassen und Tests, den Noten-Export (PDF/CSV) und den iCloud-Sync frei.</p>
+<div class="faq">
+  <p class="faq-frage"><span class="haken">✓</span> Was ist gratis, was kostet etwas?</p>
+  <p class="faq-antwort">Die Gratis-Version ist voll als Notenrechner nutzbar (inkl. einer
+  Klassenliste, zwei Tests, kostenloser Datensicherung und der App-Sperre per FaceID/Code).
+  Mit dem einmaligen Kauf „Notenkiste Pro" (kein Abo) schaltest du das Zeugnis-Modul,
+  unbegrenzte Klassen und Tests, den Noten-Export (PDF/CSV) und den iCloud-Sync frei.</p>
+</div>
 
-<p class="faq-frage">Wie lösche ich meine Daten?</p>
-<p class="faq-antwort">Im Tab <em>Info</em> unter „Daten löschen" kannst du gezielt Tests,
-Klassenlisten, Zeugnisse oder alles löschen. Beim Löschen der App werden ohnehin alle
-lokal gespeicherten Daten entfernt.</p>
+<div class="faq">
+  <p class="faq-frage"><span class="haken">✓</span> Wie lösche ich meine Daten?</p>
+  <p class="faq-antwort">Im Tab <em>Info</em> unter „Daten löschen" kannst du gezielt Tests,
+  Klassenlisten, Zeugnisse oder alles löschen. Beim Löschen der App werden ohnehin alle
+  lokal gespeicherten Daten entfernt.</p>
+</div>
 
-<p style="margin-top:2rem"><a href="datenschutz.html">→ Datenschutzerklärung</a> &nbsp;·&nbsp; <a href="impressum.html">→ Impressum</a></p>
+</main>
+
+<p class="fussnav">
+  <a href="datenschutz.html">Datenschutzerklärung</a> &nbsp;·&nbsp; <a href="impressum.html">Impressum</a>
+</p>
+
+<div class="pencil-divider">✏️ · · · · ·</div>
 
 <footer>Notenkiste · Sebastian Stein</footer>
 
