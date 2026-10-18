@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Notenkiste – Noten, Tests & Zeugnisse für die Grundschule</title>
-<meta name="description" content="Notenkiste: Noten berechnen, Tests auswerten und Zeugnisse vorbereiten – alles lokal auf dem Gerät, ohne Konten und ohne Tracking.">
+<title>Notenkiste – Noten, Tests, Zeugnisse & Sitzplan für die Grundschule</title>
+<meta name="description" content="Notenkiste: Noten berechnen, Tests auswerten, Zeugnisse vorbereiten und Sitzpläne nach Regeln erstellen – mit Lehrkräften entwickelt, alles lokal auf dem Gerät, ohne Konten und ohne Tracking.">
 <link rel="icon" href="img/appicon.png">
 <style>
   :root{
@@ -185,6 +185,18 @@
     box-shadow:0 14px 30px rgba(30,60,110,.20);
     border:6px solid #111;
   }
+  .quer-titel{
+    margin-top:1.6rem;
+  }
+  .shots-quer{
+    align-items:flex-start;
+  }
+  .shots-quer img{
+    width:auto;
+    height:260px;
+    max-width:calc(100vw - 3rem);
+    object-fit:contain;
+  }
 
   /* Freemium */
   .preise{
@@ -220,6 +232,66 @@
     border-radius:999px;
     margin-left:.4rem;
   }
+
+  /* „Mit Lehrkräften entwickelt“-Vertrauensabzeichen im Hero */
+  .hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:.45rem;
+    margin-top:1.4rem;
+    padding:.42rem .95rem;
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.45);
+    border-radius:999px;
+    font-size:.88rem;
+    font-weight:600;
+    color:#fff;
+  }
+
+  /* Sitzplan-Spotlight – hebt das neue Modul deutlich hervor */
+  .spotlight{
+    background:linear-gradient(165deg,#e9f2ff,#fff 70%);
+    border:1.5px solid var(--blau-hell);
+    border-radius:22px;
+    padding:2.1rem 1.9rem;
+    box-shadow:0 12px 32px rgba(30,60,110,.14);
+  }
+  .neu-badge{
+    display:inline-block;
+    background:var(--blau-dunkel);
+    color:#fff;
+    font-size:.74rem;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    padding:.2rem .65rem;
+    border-radius:999px;
+    margin-bottom:.7rem;
+  }
+  .spotlight h2{
+    text-align:left;
+    margin:.1rem 0 .55rem;
+  }
+  .spotlight > p.lead{
+    margin:0 0 1.4rem;
+    font-size:1.04rem;
+    color:var(--text-soft);
+    max-width:46rem;
+  }
+  .spotlight-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1rem;
+  }
+  .spotlight-punkt{
+    background:#fff;
+    border-radius:14px;
+    padding:1.05rem 1.15rem;
+    box-shadow:0 4px 14px rgba(30,60,110,.07);
+  }
+  .spotlight-punkt .emoji{ font-size:1.55rem; display:block; margin-bottom:.35rem; }
+  .spotlight-punkt h4{ margin:.1rem 0 .3rem; font-size:.98rem; }
+  .spotlight-punkt p{ margin:0; font-size:.87rem; color:var(--text-soft); }
 
   .datenschutz-band{
     background:#eaf3ff;
@@ -264,12 +336,14 @@
     <a class="btn btn-primary" href="https://apps.apple.com/app/notenkiste" target="_blank" rel="noopener">📱 Im App Store</a>
     <a class="btn btn-ghost" href="support.html">Support &amp; FAQ</a>
   </div>
+  <div class="hero-badge">🍎 Mit Lehrerinnen und Lehrern entwickelt</div>
 </div>
 
 <div class="notiz">
   <div class="notiz-zeile"><span class="haken">✓</span> Notenrechner mit frei einstellbarem Notenschlüssel</div>
   <div class="notiz-zeile"><span class="haken">✓</span> Klassenlisten &amp; Tests mit automatischer Auswertung</div>
   <div class="notiz-zeile"><span class="haken">✓</span> Zeugnismodul mit Fach- und Klassenübersicht</div>
+  <div class="notiz-zeile"><span class="haken">✓</span> Sitzpläne nach Regeln erstellen &amp; als PDF drucken</div>
   <div class="notiz-zeile"><span class="haken">✓</span> PDF-/CSV-Export &amp; optionaler iCloud-Sync</div>
 </div>
 
@@ -306,6 +380,48 @@
       <h3>iCloud-Sync</h3>
       <p>Optionaler Abgleich zwischen iPhone und iPad über deinen eigenen Account.</p>
     </div>
+    <div class="feature">
+      <span class="emoji">💾</span>
+      <h3>Datensicherung</h3>
+      <p>Nach jeder Änderung automatisch und verschlüsselt gesichert – nur du kannst sie öffnen.</p>
+    </div>
+    <div class="feature">
+      <span class="emoji">📱</span>
+      <h3>iPhone, iPad &amp; Duo</h3>
+      <p>Im Querformat zweispaltig: Kinderliste und Klassenschnitt nebeneinander – auch auf dem iPhone Duo.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="spotlight">
+    <span class="neu-badge">Neu · Pro</span>
+    <h2>🪑 Der Sitzplan, der deine Klasse schon kennt</h2>
+    <p class="lead">Klassenzimmer einmal nachbauen, Regeln festlegen – und die App setzt die
+    Kinder auf Knopfdruck. Weil Notenkiste deine Klassenliste bereits hat, tippst du keinen
+    einzigen Namen neu ein. Alles läuft lokal auf deinem Gerät, ganz ohne Cloud.</p>
+    <div class="spotlight-grid">
+      <div class="spotlight-punkt">
+        <span class="emoji">📐</span>
+        <h4>Raum nachbauen</h4>
+        <p>Einzel- und Doppeltische, Möbel und Tafel frei platzieren – auf Wunsch mit echten Maßen.</p>
+      </div>
+      <div class="spotlight-punkt">
+        <span class="emoji">🧩</span>
+        <h4>Regeln statt Puzzeln</h4>
+        <p>„Nicht nebeneinander", „zusammensetzen", fester Platz, vorne/hinten – die App hält sich daran.</p>
+      </div>
+      <div class="spotlight-punkt">
+        <span class="emoji">🎲</span>
+        <h4>Auf einen Tap verteilt</h4>
+        <p>Automatische Sitzverteilung nach allen Regeln – du behältst jederzeit das letzte Wort.</p>
+      </div>
+      <div class="spotlight-punkt">
+        <span class="emoji">🖨️</span>
+        <h4>Als PDF drucken</h4>
+        <p>Aus Schüler- oder Lehrerperspektive – ideal für Aushang und Vertretungsstunden.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -313,12 +429,18 @@
   <h2>Ein Blick in die App</h2>
   <div class="shots">
     <img src="img/shot_rechner.png" alt="Screenshot: Notenrechner" loading="lazy">
-    <img src="img/shot_klasse.png" alt="Screenshot: Klasse" loading="lazy">
-    <img src="img/shot_tests.png" alt="Screenshot: Tests" loading="lazy">
-    <img src="img/shot_test_noten.png" alt="Screenshot: Test-Noten" loading="lazy">
-    <img src="img/shot_zeugnis_uebersicht.png" alt="Screenshot: Zeugnisübersicht" loading="lazy">
-    <img src="img/shot_zeugnis.png" alt="Screenshot: Zeugnis Klasse" loading="lazy">
-    <img src="img/shot_zeugnis_kind.png" alt="Screenshot: Zeugnis Kind" loading="lazy">
+    <img src="img/shot_test_noten.png" alt="Screenshot: Test mit Noten je Kind" loading="lazy">
+    <img src="img/shot_zeugnis_uebersicht.png" alt="Screenshot: Zeugnis in 3 Schritten" loading="lazy">
+    <img src="img/shot_zeugnis.png" alt="Screenshot: Zeugnis der Klasse" loading="lazy">
+    <img src="img/shot_zeugnis_kind.png" alt="Screenshot: Zeugnis eines Kindes" loading="lazy">
+    <img src="img/shot_sitzplan.png" alt="Screenshot: Sitzplan" loading="lazy">
+    <img src="img/shot_regeln.png" alt="Screenshot: Sitzplan-Regeln" loading="lazy">
+    <img src="img/shot_raumeditor.png" alt="Screenshot: Raumeditor" loading="lazy">
+  </div>
+  <h3 class="quer-titel">Auch im Querformat und auf dem iPad</h3>
+  <div class="shots shots-quer">
+    <img src="img/shot_duo_test.png" alt="Screenshot: Test im Querformat auf dem iPhone Duo – Kinderliste und Klassenschnitt nebeneinander" loading="lazy">
+    <img src="img/shot_ipad_test.png" alt="Screenshot: iPad mit Testliste neben dem Test" loading="lazy">
   </div>
 </section>
 
@@ -331,7 +453,7 @@
         <li>Notenrechner unbegrenzt</li>
         <li>1 Klasse, 2 Tests</li>
         <li>Notentabellen ansehen</li>
-        <li>Datensicherung (Export/Import)</li>
+        <li>Automatische, verschlüsselte Datensicherung</li>
         <li>App-Sperre per FaceID/Code</li>
       </ul>
     </div>
@@ -341,7 +463,9 @@
         <li>Unbegrenzte Klassen &amp; Tests</li>
         <li>Zeugnis-Modul</li>
         <li>PDF-/CSV-Export</li>
+        <li>Sitzplan-Modul mit Regeln &amp; PDF</li>
         <li>iCloud-Sync zwischen deinen Geräten</li>
+        <li>Zusätzliche Sicherung in deinem iCloud Drive</li>
         <li>Kein Abo – einmal kaufen, immer nutzen</li>
       </ul>
     </div>
